@@ -3,6 +3,8 @@ package com.nzoudy.business;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.nzoudy.model.Product;
+
 public class ProductServiceImpl {
 
 	List<String> bookList = new ArrayList<>();
@@ -60,6 +62,13 @@ public class ProductServiceImpl {
 		return true;
 		
 		
+	}
+
+	public List<Product> getProductsv2(String category) {
+		List<Product> products = new ArrayList<>();
+		products.add(new Product("Java Nzoudy book", "9999", 23.80));
+		products.add(new Product("Math book", "9349", 23.90));
+		return products;
 	}
 	
 }
