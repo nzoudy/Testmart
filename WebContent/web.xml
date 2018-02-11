@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+					   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+					   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee">
+					   <!-- http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd -->
+
+	<listener>
+		<listener-class>com.xml.ws.transport.http.servlet.WSServletContextListener</listener-class>
+	</listener>
+
+	<servlet>
+		<servlet-name>SimpleWS</servlet-name>
+		<servlet-class>com.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProductCatalog</servlet-name>
+		<url-pattern>/service/product</url-pattern>		
+	</servlet-mapping>
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+	
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Product Catalog Roles Security</web-resource-name>
+			<url-pattern>/service/product</url-pattern>
+		</web-resource-collection>
+		
+		<auth-constraint>
+			<role-name>catalog</role-name>
+		</auth-constraint>
+		<user-data-constraint>
+			<transport-guarantee>NONE</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	<security-role>
+		<description>Normal catalog user</description>
+		<role-name>catalog</role-name>
+	</security-role>
+	
+</web-app>
