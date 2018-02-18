@@ -1,15 +1,10 @@
 package com.nzoudy;
 
-public class InvalidInputException extends Exception {
+public class InvalidInputException extends InformationException {
 
-	private String errorDetails;
-	
 	public InvalidInputException(String reason, String errorDetails){
 		super(reason);
 		this.errorDetails = errorDetails;
 	}
 	
-	public String getFaultInfo(){
-		return errorDetails;
-	}
 }
